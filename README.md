@@ -48,3 +48,21 @@ Asegúrate de tener instalado en tu máquina:
 git clone https://github.com/Nicobgn/showcase-java-auth.git
 cd showcase-java-auth
 ```
+
+#### 1.1 Corriendo tests con Maven
+
+```bash
+./mvnw clean test
+```
+
+#### 1.2 Corriendo tests con Maven y detalles
+
+```bash
+./mvnw clean test -e
+```
+
+### 2. Iniciar el proyecto
+
+```bash
+./mvnw spring-boot:run
+```
