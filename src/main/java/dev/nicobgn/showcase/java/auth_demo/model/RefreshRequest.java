@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class SigninRequest {
-  private String username;
-  private String password;
+public class RefreshRequest {
+  private String refreshToken;
 }

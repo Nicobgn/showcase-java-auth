@@ -49,6 +49,7 @@ git clone [https://github.com/Nicobgn/showcase-java-auth.git](https://github.com
 cd showcase-java-auth
 ```
 
+<<<<<<< HEAD
 ### 2. Ejecución Completa con Docker (Recomendado)
 
 La forma más rápida de auditar este servicio es utilizando Docker. Esto levantará tanto la base de datos PostgreSQL como la aplicación de Spring Boot en contenedores, sin necesidad de configurar variables de entorno locales.
@@ -69,10 +70,26 @@ Si prefieres correrlo localmente conectándolo a tu propia instancia de PostgreS
 ```
 
 #### 3.2 Iniciar el proyecto
+=======
+#### 1.1 Corriendo tests con Maven
+
+```bash
+./mvnw clean test
+```
+
+#### 1.2 Corriendo tests con Maven y detalles
+
+```bash
+./mvnw clean test -e
+```
+
+### 2. Iniciar el proyecto
+>>>>>>> 0e3c281 (fix: adding more context on usage at readme)
 
 ```bash
 ./mvnw spring-boot:run
 ```
+<<<<<<< HEAD
 
 ---
 
@@ -89,3 +106,5 @@ Una vez que la aplicación esté corriendo (ya sea vía Docker o localmente), pu
 Este proyecto se distribuye bajo la licencia **AGPLv3**. Su código fuente está disponible públicamente para fines de auditoría, evaluación técnica y proyectos de código abierto. Cualquier uso o integración de este microservicio en sistemas accesibles a través de una red requiere que el proyecto comercial completo sea de código abierto.
 
 Para consultas sobre licenciamiento comercial privado o integración empresarial, por favor contactarme directamente.
+=======
+>>>>>>> 0e3c281 (fix: adding more context on usage at readme)

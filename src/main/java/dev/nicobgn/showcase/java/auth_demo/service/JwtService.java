@@ -22,8 +22,11 @@ public class JwtService {
   @Value("${application.security.jwt.secret-key}")
   private String secretKey;
 
-  @Value("${application.security.jwt.expiration}")
-  private Long jwtExpiration;
+  @Value("${application.security.jwt.access-expiration}")
+  private Long accessJwtExpiration;
+
+  @Value("${application.security.jwt.refresh-expiration}")
+  private Long refreshJwtExpiration;
 
   public String generateAccessToken(UserDetails userDetails) {
     return generateAccessToken(new HashMap<>(), userDetails);
@@ -37,7 +40,7 @@ public class JwtService {
         .claims(extraClaims)
         .subject(userDetails.getUsername())
         .issuedAt(Date.from(now))
-        .expiration(Date.from(now.plusMillis(jwtExpiration)))
+        .expiration(Date.from(now.plusMillis(accessJwtExpiration)))
         .signWith(getSignInKey())
         .compact();
   }
@@ -47,7 +50,7 @@ public class JwtService {
     return Jwts.builder()
         .subject(userDetails.getUsername())
         .issuedAt(Date.from(now))
-        .expiration(Date.from(now.plusMillis(jwtExpiration)))
+        .expiration(Date.from(now.plusMillis(refreshJwtExpiration)))
         .signWith(getSignInKey())
         .compact();
   }

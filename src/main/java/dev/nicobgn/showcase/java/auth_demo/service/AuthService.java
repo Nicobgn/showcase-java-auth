@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import dev.nicobgn.showcase.java.auth_demo.model.AuthResponse;
+import dev.nicobgn.showcase.java.auth_demo.model.RefreshRequest;
 import dev.nicobgn.showcase.java.auth_demo.model.Role;
 import dev.nicobgn.showcase.java.auth_demo.model.SigninRequest;
 import dev.nicobgn.showcase.java.auth_demo.model.SignupRequest;
@@ -62,6 +63,30 @@ public class AuthService {
     return AuthResponse.builder()
         .accessToken(accessToken)
         .refreshToken(refreshToken)
+        .build();
+  }
+
+  @Transactional
+  public AuthResponse refresh(RefreshRequest request) {
+    String refreshToken = request.getRefreshToken();
+
+    if (refreshToken == null || refreshToken.isEmpty()) {
+      throw new IllegalArgumentException("Refresh token cannot be empty");
+    }
+
+    String username = jwtService.extractUsername(refreshToken);
+    User user = userRepository.findByUsername(username)
+        .orElseThrow(() -> new IllegalArgumentException("User not found"));
+
+    if (!jwtService.isTokenValid(refreshToken, user)) {
+      throw new IllegalArgumentException("Invalid refresh token");
+    }
+
+    String newAccessToken = jwtService.generateAccessToken(user);
+
+    return AuthResponse.builder()
+        .accessToken(newAccessToken)
+        .refreshToken(refreshToken) // Keep the same refresh token
         .build();
   }
 }
