@@ -19,7 +19,18 @@
 		<license/>
 	</licenses>
 	<developers>
-		<developer/>
+		<developer>
+			<id>nicobgn</id>
+			<name>Nicolas Ignacio Barragan</name>
+			<email>nicolasigbarragan@gmail.com</email>
+			<organization>Barragan Consultoria</organization>
+			<organizationUrl>https://github.com/Nicobgn</organizationUrl>
+			<roles>
+				<role>Developer</role>
+				<role>Architect</role>
+			</roles>
+			<timezone>-3</timezone>
+		</developer>
 	</developers>
 	<scm>
 		<connection/>

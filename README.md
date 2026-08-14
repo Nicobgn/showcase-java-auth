@@ -23,6 +23,7 @@ Este proyecto sirve como showcase para demostrar las mejores prácticas en la im
 
 - **Registro de usuarios (`/signup`)**: Creación de cuentas con contraseñas encriptadas mediante BCrypt.
 - **Autenticación de usuarios (`/signin`)**: Validación de credenciales y generación de Access Token JWT.
+- **Refresh Tokens**: Emisión de tokens de actualización para mantener sesiones sin necesidad de reautenticación frecuente.
 - **Seguridad por Capas**: Configuración de reglas `SecurityFilterChain` con manejo estricto de excepciones.
 - **Filtro JWT Personalizado**: Interceptación de peticiones para validar firma y expiración de tokens.
 - **Documentación OpenAPI**: Documentación interactiva para probar endpoints directamente desde el navegador.
@@ -44,6 +45,6 @@ Asegúrate de tener instalado en tu máquina:
 ### 1. Clonar el repositorio
 
 ```bash
-git clone [https://github.com/Nicobgn/showcase-java-auth.git](https://github.com/Nicobgn/showcase-java-auth.git)
-cd auth-demo-spring-boot
+git clone https://github.com/Nicobgn/showcase-java-auth.git
+cd showcase-java-auth
 ```
