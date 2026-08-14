@@ -11,10 +11,7 @@
 	<groupId>dev.nicobgn.showcase.java</groupId>
 	<artifactId>auth_demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<modules>
-		<module>config</module>
-	</modules>
+	<packaging>jar</packaging>
 	<name>auth_demo</name>
 	<description/>
 	<url/>

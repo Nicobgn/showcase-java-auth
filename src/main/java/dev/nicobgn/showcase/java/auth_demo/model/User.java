@@ -10,7 +10,9 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", uniqueConstraints = {
+    @UniqueConstraint(columnNames = "username")
+})
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
