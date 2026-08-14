@@ -1,4 +1,4 @@
-# 🔐 Spring Boot 3 - JWT Auth Microservice Showcase
+# 🔐 Spring Boot 4 - JWT Auth Microservice Showcase
 
 Un microservicio de autenticación robusto y listo para producción construido con **Spring Boot 4**, **Spring Security 7**, **JSON Web Tokens (JWT)** y **PostgreSQL**.
 
