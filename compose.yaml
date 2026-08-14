@@ -1,9 +1,11 @@
 services:
   postgres:
-    image: 'postgres:latest'
+    image: 'postgres:17-alpine'
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      - POSTGRES_DB=${POSTGRES_DB:-auth_demo}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-showcase}
+      - POSTGRES_USER=${POSTGRES_USER:-showcase}
     ports:
       - '5432'
+    env_file:
+      - .env

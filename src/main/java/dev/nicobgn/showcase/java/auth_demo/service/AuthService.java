@@ -4,6 +4,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import dev.nicobgn.showcase.java.auth_demo.model.AuthResponse;
 import dev.nicobgn.showcase.java.auth_demo.model.Role;
@@ -21,7 +22,12 @@ public class AuthService {
   private final JwtService jwtService;
   private final AuthenticationManager authenticationManager;
 
+  @Transactional
   public AuthResponse signup(SignupRequest request) {
+    if (request.getUsername() == null || request.getUsername().isEmpty()) {
+      throw new IllegalArgumentException("Username cannot be empty");
+    }
+
     if (userRepository.existsByUsername(request.getUsername())) {
       throw new IllegalArgumentException("Username already exists");
     }
@@ -41,6 +47,7 @@ public class AuthService {
         .build();
   }
 
+  @Transactional
   public AuthResponse signin(SigninRequest request) {
     authenticationManager
         .authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
