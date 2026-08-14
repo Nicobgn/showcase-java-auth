@@ -25,16 +25,26 @@ public class JwtService {
   @Value("${application.security.jwt.expiration}")
   private Long jwtExpiration;
 
-  public String generateToken(UserDetails userDetails) {
-    return generateToken(new HashMap<>(), userDetails);
+  public String generateAccessToken(UserDetails userDetails) {
+    return generateAccessToken(new HashMap<>(), userDetails);
   }
 
-  public String generateToken(
+  public String generateAccessToken(
       Map<String, Object> extraClaims,
       UserDetails userDetails) {
     Instant now = Instant.now();
     return Jwts.builder()
         .claims(extraClaims)
+        .subject(userDetails.getUsername())
+        .issuedAt(Date.from(now))
+        .expiration(Date.from(now.plusMillis(jwtExpiration)))
+        .signWith(getSignInKey())
+        .compact();
+  }
+
+  public String generateRefreshToken(UserDetails userDetails) {
+    Instant now = Instant.now();
+    return Jwts.builder()
         .subject(userDetails.getUsername())
         .issuedAt(Date.from(now))
         .expiration(Date.from(now.plusMillis(jwtExpiration)))
