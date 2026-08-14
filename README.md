@@ -1,6 +1,6 @@
 # 🔐 Spring Boot 3 - JWT Auth Microservice Showcase
 
-Un microservicio de autenticación robusto y listo para producción construido con **Spring Boot 3**, **Spring Security 6**, **JSON Web Tokens (JWT)** y **PostgreSQL**.
+Un microservicio de autenticación robusto y listo para producción construido con **Spring Boot 4**, **Spring Security 7**, **JSON Web Tokens (JWT)** y **PostgreSQL**.
 
 Este proyecto sirve como showcase para demostrar las mejores prácticas en la implementación de seguridad sin estado (_stateless_), arquitectura limpia y documentación de APIs RESTful.
 
@@ -10,7 +10,7 @@ Este proyecto sirve como showcase para demostrar las mejores prácticas en la im
 
 - **Java 21**
 - **Spring Boot 4.1**
-- **Spring Security 6** (Autenticación sin estado con JWT)
+- **Spring Security 7** (Autenticación sin estado con JWT)
 - **Spring Data JPA** (Persistencia de datos)
 - **PostgreSQL** (Base de datos relacional)
 - **Lombok** (Reducción de código repetitivo)
@@ -44,6 +44,6 @@ Asegúrate de tener instalado en tu máquina:
 ### 1. Clonar el repositorio
 
 ```bash
-git clone [https://github.com/tu-usuario/auth-demo-spring-boot.git](https://github.com/tu-usuario/auth-demo-spring-boot.git)
+git clone [https://github.com/Nicobgn/showcase-java-auth.git](https://github.com/Nicobgn/showcase-java-auth.git)
 cd auth-demo-spring-boot
 ```
