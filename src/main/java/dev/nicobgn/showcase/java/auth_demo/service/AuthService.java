@@ -40,10 +40,12 @@ public class AuthService {
 
     userRepository.save(user);
 
-    String jwtToken = jwtService.generateToken(user);
+    String accessToken = jwtService.generateAccessToken(user);
+    String refreshToken = jwtService.generateRefreshToken(user);
+
     return AuthResponse.builder()
-        .accessToken(jwtToken)
-        .refreshToken(jwtToken)
+        .accessToken(accessToken)
+        .refreshToken(refreshToken)
         .build();
   }
 
@@ -55,10 +57,11 @@ public class AuthService {
     User user = userRepository.findByUsername(request.getUsername())
         .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-    String jwtToken = jwtService.generateToken(user);
+    String accessToken = jwtService.generateAccessToken(user);
+    String refreshToken = jwtService.generateRefreshToken(user);
     return AuthResponse.builder()
-        .accessToken(jwtToken)
-        .refreshToken(jwtToken)
+        .accessToken(accessToken)
+        .refreshToken(refreshToken)
         .build();
   }
 }
