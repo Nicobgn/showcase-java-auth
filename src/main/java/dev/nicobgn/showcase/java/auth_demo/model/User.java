@@ -1,4 +1,4 @@
-package dev.nicobgn.showcase.java.auth_demo.model.entity;
+package dev.nicobgn.showcase.java.auth_demo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
