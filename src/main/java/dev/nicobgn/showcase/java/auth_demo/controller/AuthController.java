@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.nicobgn.showcase.java.auth_demo.model.AuthResponse;
+import dev.nicobgn.showcase.java.auth_demo.model.RefreshRequest;
 import dev.nicobgn.showcase.java.auth_demo.model.SigninRequest;
 import dev.nicobgn.showcase.java.auth_demo.model.SignupRequest;
 import dev.nicobgn.showcase.java.auth_demo.service.AuthService;
@@ -26,5 +27,10 @@ public class AuthController {
   @PostMapping("/signin")
   public ResponseEntity<AuthResponse> signin(@RequestBody SigninRequest request) {
     return ResponseEntity.ok(authService.signin(request));
+  }
+
+  @PostMapping("/refresh")
+  public ResponseEntity<AuthResponse> refresh(@RequestBody RefreshRequest refreshToken) {
+    return ResponseEntity.ok(authService.refresh(refreshToken));
   }
 }
