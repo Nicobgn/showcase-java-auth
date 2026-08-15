@@ -1,11 +1,14 @@
 services:
-  postgres:
+  nicobgn-showcase-db:
     image: 'postgres:17-alpine'
+    container_name: nicobgn-showcase-db
     environment:
-      - POSTGRES_DB=${POSTGRES_DB:-auth_demo}
+      - POSTGRES_DB=${POSTGRES_DB:-showcase}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-showcase}
       - POSTGRES_USER=${POSTGRES_USER:-showcase}
     ports:
       - '5432'
     env_file:
       - .env
+    restart: always
+

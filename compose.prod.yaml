@@ -1,0 +1,31 @@
+services:
+  nicobgn-showcase-db:
+    image: 'postgres:17-alpine'
+    container_name: nicobgn-showcase-db
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-showcase}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-showcase}
+      - POSTGRES_USER=${POSTGRES_USER:-showcase}
+    ports:
+      - '5432'
+    env_file:
+      - .env
+    restart: always
+  
+  nicobgn-showcase-auth:
+    image: 'localhost/showcase-java-auth:latest'
+    # image: 'ghcr.io/Nicobgn/showcase-java-auth:latest'
+    container_name: nicobgn-showcase-auth
+    environment:
+      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-docker}
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://nicobgn-showcase-db:5432/${POSTGRES_DB:-showcase}
+      - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER:-showcase}
+      - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD:-showcase}
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.postgresql.Driver
+    ports:
+      - '8080:8080'
+    env_file:
+      - .env
+    depends_on:
+      - nicobgn-showcase-db
+    restart: unless-stopped

@@ -1,0 +1,39 @@
+# Archivos y carpetas de compilación local
+target/
+*.jar
+*.war
+*.ear
+
+# Entornos de desarrollo y configuración de IDEs
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.nb-gradle/
+.nbgraphics/
+.nb-cache/
+
+# Control de versiones y Git
+.git/
+.gitignore
+.gitattributes
+
+# Workflows de CI/CD (No se necesitan dentro del contenedor)
+.github/
+
+# Archivos de entorno y secretos
+.env
+*.env
+*.pem
+*.key
+
+# Documentación, logs y reportes temporales
+*.md
+*.log
+HELP.md
+docker-compose*.yml
+
+# Caché del sistema operativo
+.DS_Store
+Thumbs.db
